@@ -1,5 +1,4 @@
 import { Label, Pie, PieChart, Sector } from "recharts";
-import { type PieSectorDataItem } from "recharts/types/polar/Pie";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -125,10 +124,7 @@ export const MarketingChart = () => {
               innerRadius={60}
               strokeWidth={5}
               activeIndex={activeIndex}
-              activeShape={({
-                outerRadius = 0,
-                ...props
-              }: PieSectorDataItem) => (
+              activeShape={({ outerRadius = 0, ...props }: any) => (
                 <g>
                   <Sector {...props} outerRadius={outerRadius + 10} />
                   <Sector
