@@ -8,6 +8,6 @@ export const ROUTES = {
   ORDERS: "orders",
   CUSTOMERS: "customers",
   PRODUCTS: "products",
-  SETTINGS: "settings",
+  ACCOUNT_SETTINGS: "account",
   USERS: "users",
 };

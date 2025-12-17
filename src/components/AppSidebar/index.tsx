@@ -15,7 +15,6 @@ import {
   SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
-  SidebarGroupLabel,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
@@ -182,8 +181,8 @@ const itemsDash = [
     icon: PackageSearch,
   },
   {
-    title: "Settings",
-    url: `/${ROUTES.DASHBOARD}/${ROUTES.SETTINGS}`,
+    title: "Account Settings",
+    url: `/${ROUTES.DASHBOARD}/${ROUTES.ACCOUNT_SETTINGS}`,
     icon: Settings,
   },
 ];
@@ -237,7 +236,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Dashboard</SidebarGroupLabel>
+          {/* <SidebarGroupLabel>Dashboard</SidebarGroupLabel> */}
           <SidebarGroupContent>
             <SidebarMenu>
               {itemsDash.map((item) => {
@@ -251,7 +250,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                             active ? "bg-primary text-primary-foreground" : ""
                           }`}
                         >
-                          <item.icon className="h-4 w-4" />
+                          <item.icon className="size-6" />
                         </div>
                         <span>{item.title}</span>
                       </Link>

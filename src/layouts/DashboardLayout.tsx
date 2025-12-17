@@ -1,4 +1,3 @@
-import logo from "@/assets/Logo.png";
 import { AppSidebar } from "@/components/AppSidebar";
 import {
   Breadcrumb,
@@ -56,7 +55,11 @@ export const DashboardLayout = () => {
               <SelectorShop></SelectorShop>
               <BellIcon className="text-primary"></BellIcon>
               <div className="w-7 h-8 rounded-b-md border">
-                <img src={logo} alt="profile picture"></img>
+                <img
+                  className="object-cover"
+                  src={"https://api.dicebear.com/7.x/avataaars/svg?seed=Carlos"}
+                  alt="profile picture"
+                ></img>
               </div>
             </div>
           </div>

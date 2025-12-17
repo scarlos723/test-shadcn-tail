@@ -29,6 +29,11 @@ const Orders = lazy(() =>
 const Products = lazy(() =>
   import("@/pages/Dashboard/Products").then((m) => ({ default: m.Products }))
 );
+const AccountSettings = lazy(() =>
+  import("@/pages/Dashboard/AccountSettings").then((m) => ({
+    default: m.AccountSettings,
+  }))
+);
 
 export const router = createBrowserRouter([
   {
@@ -80,6 +85,10 @@ export const router = createBrowserRouter([
       {
         path: ROUTES.PRODUCTS,
         Component: Products,
+      },
+      {
+        path: ROUTES.ACCOUNT_SETTINGS,
+        Component: AccountSettings,
       },
       {
         path: "*",
