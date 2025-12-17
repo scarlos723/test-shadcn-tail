@@ -12,9 +12,9 @@ export interface UserData {
 
 export const mockUserData: UserData = {
   firstName: "Carlos",
-  lastName: "Rodríguez",
+  lastName: "Doe",
   documentId: "1234567890",
-  email: "carlos.rodriguez@example.com",
+  email: "carlitos@example.com",
   countryCode: "+57",
   phoneNumber: "3001234567",
   address: "Calle 123 #45-67",

@@ -27,7 +27,7 @@ export function Navbar() {
               Características
             </a>
             <Link
-              to={ROUTES.DASHBOARD}
+              to={`/${ROUTES.DASHBOARD}`}
               className="text-sm font-medium transition-colors hover:text-primary"
             >
               Cómo Funciona

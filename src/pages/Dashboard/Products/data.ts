@@ -158,6 +158,15 @@ export const productsData: Product[] = Array.from({ length: 100 }, (_, i) => {
       ? "out-of-stock"
       : statuses[Math.floor(Math.random() * statuses.length)];
 
+  // Generate date with random time in the last 6 months
+  const daysAgo = Math.floor(Math.random() * 180); // 0-180 days ago
+  const dateAdded = new Date(Date.now() - daysAgo * 24 * 60 * 60 * 1000);
+  dateAdded.setHours(
+    Math.floor(Math.random() * 24),
+    Math.floor(Math.random() * 60),
+    Math.floor(Math.random() * 60)
+  );
+
   return {
     id: `PRD-${String(i + 1).padStart(4, "0")}`,
     productName: `${productName} ${Math.floor(i / 10) + 1}`,
@@ -167,5 +176,6 @@ export const productsData: Product[] = Array.from({ length: 100 }, (_, i) => {
     discount,
     totalValue,
     status,
+    dateAdded: dateAdded.toISOString(), // Full ISO format with time
   };
 });

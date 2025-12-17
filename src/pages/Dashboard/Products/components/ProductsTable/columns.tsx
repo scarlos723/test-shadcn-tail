@@ -4,6 +4,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import type { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react";
 import type { Product } from "../../types";
+import { ProductNameCell } from "./ProductNameCell";
 
 export const columns: ColumnDef<Product>[] = [
   {
@@ -35,6 +36,12 @@ export const columns: ColumnDef<Product>[] = [
         Product Name
         <ArrowUpDown className="ml-2 h-4 w-4" />
       </Button>
+    ),
+    cell: ({ row }) => (
+      <ProductNameCell
+        productId={row.original.id}
+        name={row.getValue("productName")}
+      />
     ),
   },
   {

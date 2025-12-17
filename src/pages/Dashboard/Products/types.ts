@@ -7,4 +7,5 @@ export type Product = {
   discount: number; // Percentage
   totalValue: number;
   status: "active" | "inactive" | "out-of-stock";
+  dateAdded: string; // ISO format with date and time
 };

@@ -4,6 +4,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import type { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react";
 import type { Customer } from "../../types";
+import { CustomerNameCell } from "./CustomerNameCell";
 
 export const columns: ColumnDef<Customer>[] = [
   {
@@ -35,6 +36,12 @@ export const columns: ColumnDef<Customer>[] = [
         Customer Name
         <ArrowUpDown className="ml-2 h-4 w-4" />
       </Button>
+    ),
+    cell: ({ row }) => (
+      <CustomerNameCell
+        customerId={row.original.id}
+        name={row.original.customerName}
+      />
     ),
   },
   {

@@ -1,5 +1,5 @@
 import { KpiCard } from "@/components/KpiCard";
-import { BaggageClaim, Users2 } from "lucide-react";
+import { BadgeDollarSign, Boxes, ShoppingBag, Users2 } from "lucide-react";
 import { MarketingChart } from "./MarketingChart";
 import { RecentOrders } from "./RecentOrders";
 import { SumaryChart } from "./SumaryChart";
@@ -12,7 +12,7 @@ export const Resume = () => {
         <div className="grid gap-4">
           <div className={gridClass}>
             <KpiCard
-              icon={<BaggageClaim />}
+              icon={<BadgeDollarSign />}
               items={[
                 { label: "Sales", value: "$25,000" },
                 { label: "Volume", value: "150" },
@@ -28,14 +28,14 @@ export const Resume = () => {
 
             <div className="grid gap-4">
               <KpiCard
-                icon={<BaggageClaim />}
+                icon={<Boxes />}
                 items={[
                   { label: "All products", value: "23" },
                   { label: "Stock products", value: "150" },
                 ]}
               />
               <KpiCard
-                icon={<BaggageClaim />}
+                icon={<ShoppingBag />}
                 items={[
                   { label: "All orders", value: "1" },
                   { label: "Pending", value: "0" },

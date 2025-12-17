@@ -5,40 +5,21 @@ import { Login } from "@/pages/Login";
 import { RecoveryPass } from "@/pages/RecoveryPass";
 import { Register } from "@/pages/Register";
 import { UiGuide } from "@/pages/UiGuide";
-import { lazy } from "react";
 import { createBrowserRouter } from "react-router";
 import { ROUTES } from "./constants";
+import {
+  AccountSettings,
+  CustomerDetails,
+  Customers,
+  DashboardLayout,
+  OrderDeatails,
+  Orders,
+  ProductDetail,
+  Products,
+  Resume,
+} from "./LazyComponents";
 
 export { ROUTES };
-
-// Lazy load Dashboard components to avoid circular dependency
-const DashboardLayout = lazy(() =>
-  import("@/layouts/DashboardLayout").then((m) => ({
-    default: m.DashboardLayout,
-  }))
-);
-const Resume = lazy(() =>
-  import("@/pages/Dashboard/Resume").then((m) => ({ default: m.Resume }))
-);
-const Customers = lazy(() =>
-  import("@/pages/Dashboard/Customers").then((m) => ({ default: m.Customers }))
-);
-const Orders = lazy(() =>
-  import("@/pages/Dashboard/Orders").then((m) => ({ default: m.Orders }))
-);
-const Products = lazy(() =>
-  import("@/pages/Dashboard/Products").then((m) => ({ default: m.Products }))
-);
-const AccountSettings = lazy(() =>
-  import("@/pages/Dashboard/AccountSettings").then((m) => ({
-    default: m.AccountSettings,
-  }))
-);
-const OrderDeatails = lazy(() =>
-  import("@/pages/Dashboard/Orders/OrderDetails").then((m) => ({
-    default: m.OrderDeatails,
-  }))
-);
 
 export const router = createBrowserRouter([
   {
@@ -81,7 +62,16 @@ export const router = createBrowserRouter([
       },
       {
         path: ROUTES.CUSTOMERS,
-        Component: Customers,
+        children: [
+          {
+            index: true,
+            Component: Customers,
+          },
+          {
+            path: ":customerId",
+            Component: CustomerDetails,
+          },
+        ],
       },
       {
         path: ROUTES.ORDERS,
@@ -98,7 +88,16 @@ export const router = createBrowserRouter([
       },
       {
         path: ROUTES.PRODUCTS,
-        Component: Products,
+        children: [
+          {
+            index: true,
+            Component: Products,
+          },
+          {
+            path: ":productId",
+            Component: ProductDetail,
+          },
+        ],
       },
       {
         path: ROUTES.ACCOUNT_SETTINGS,
