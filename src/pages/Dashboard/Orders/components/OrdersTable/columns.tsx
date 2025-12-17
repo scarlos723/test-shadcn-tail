@@ -3,6 +3,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import type { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react";
 import type { Order } from "../../types";
+import { CustomerNameCell } from "./CustomerNameCell";
 
 export const columns: ColumnDef<Order>[] = [
   {
@@ -37,6 +38,12 @@ export const columns: ColumnDef<Order>[] = [
         </Button>
       );
     },
+    cell: ({ row }) => (
+      <CustomerNameCell
+        orderId={row.original.id}
+        name={row.getValue("customerName")}
+      />
+    ),
   },
   {
     accessorKey: "orderType",
@@ -67,6 +74,15 @@ export const columns: ColumnDef<Order>[] = [
   {
     accessorKey: "orderDate",
     header: "Date",
+    cell: ({ row }) => {
+      const date = new Date(row.getValue("orderDate"));
+      const formatted = new Intl.DateTimeFormat("en-US", {
+        year: "numeric",
+        month: "short",
+        day: "2-digit",
+      }).format(date);
+      return <div>{formatted}</div>;
+    },
   },
   {
     accessorKey: "trackingId",

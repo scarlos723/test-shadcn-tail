@@ -112,6 +112,9 @@ const orderTypes: Array<"online" | "in-store" | "pickup" | "delivery"> = [
   "pickup",
   "delivery",
 ];
+const paymentMethods: Array<
+  "credit-card" | "debit-card" | "paypal" | "cash" | "bank-transfer"
+> = ["credit-card", "debit-card", "paypal", "cash", "bank-transfer"];
 const statuses: Array<
   "pending" | "processing" | "shipped" | "delivered" | "cancelled"
 > = ["pending", "processing", "shipped", "delivered", "cancelled"];
@@ -120,19 +123,31 @@ const generateOrder = (index: number): Payment => {
   const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
   const lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
   const orderType = orderTypes[Math.floor(Math.random() * orderTypes.length)];
+  const paymentMethod =
+    paymentMethods[Math.floor(Math.random() * paymentMethods.length)];
   const status = statuses[Math.floor(Math.random() * statuses.length)];
-  const date = new Date(2024, 10, 1 + (index % 30));
+
+  // Genera fecha con hora aleatoria
+  const date = new Date(
+    2024,
+    10,
+    1 + (index % 30),
+    Math.floor(Math.random() * 24), // hora aleatoria 0-23
+    Math.floor(Math.random() * 60), // minuto aleatorio 0-59
+    Math.floor(Math.random() * 60) // segundo aleatorio 0-59
+  );
 
   return {
     id: `ORD-${String(index + 1).padStart(3, "0")}`,
     customerName: `${firstName} ${lastName}`,
-    orderDate: date.toISOString().split("T")[0],
+    orderDate: date.toISOString(), // Fecha completa con hora en formato ISO
     orderType,
     trackingId: `TRK-${Math.random()
       .toString(36)
       .substring(2, 10)
       .toUpperCase()}`,
     orderTotal: parseFloat((Math.random() * 1500 + 50).toFixed(2)),
+    paymentMethod,
     status,
   };
 };

@@ -34,6 +34,11 @@ const AccountSettings = lazy(() =>
     default: m.AccountSettings,
   }))
 );
+const OrderDeatails = lazy(() =>
+  import("@/pages/Dashboard/Orders/OrderDetails").then((m) => ({
+    default: m.OrderDeatails,
+  }))
+);
 
 export const router = createBrowserRouter([
   {
@@ -80,7 +85,16 @@ export const router = createBrowserRouter([
       },
       {
         path: ROUTES.ORDERS,
-        Component: Orders,
+        children: [
+          {
+            index: true,
+            Component: Orders,
+          },
+          {
+            path: ":orderId",
+            Component: OrderDeatails,
+          },
+        ],
       },
       {
         path: ROUTES.PRODUCTS,

@@ -255,7 +255,7 @@ export const AccountSettings = () => {
                 </div>
               </div>
               {/* Submit Button */}
-              <div className="flex justify-end py-8 lg:pt-4 lg:pb-0 sticky bottom-0 bg-white">
+              <div className="flex justify-end py-8 lg:pt-4 lg:pb-0 sticky bottom-0 bg-white/50 backdrop-blur-xs ">
                 <Button type="submit" size="lg">
                   Update
                 </Button>
