@@ -163,7 +163,7 @@ export const SumaryChart = () => {
       <CardHeader>
         <div className="flex items-center justify-between">
           <CardTitle>Summary Chart - {getTitle()}</CardTitle>
-          <div className="flex gap-2">
+          <div className="grid lg:flex gap-2">
             <Select
               value={dataType}
               onValueChange={(value) => setDataType(value as DataType)}
@@ -202,7 +202,13 @@ export const SumaryChart = () => {
             <YAxis />
             <Tooltip />
             <Legend />
-            <Bar dataKey="value" fill={getBarColor()} name={getTitle()} />
+            <Bar
+              dataKey="value"
+              fill={getBarColor()}
+              name={getTitle()}
+              radius={[8, 8, 0, 0]}
+              barSize={40}
+            />
           </BarChart>
         </ResponsiveContainer>
       </CardContent>
