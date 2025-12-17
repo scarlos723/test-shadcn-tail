@@ -7,7 +7,7 @@ import { SumaryChart } from "./SumaryChart";
 const gridClass = " grid lg:grid-cols-2 gap-2";
 export const Resume = () => {
   return (
-    <div>
+    <div className="grid gap-4">
       <div className="grid lg:grid-cols-[2fr_1fr] gap-2">
         <div className="grid gap-4">
           <div className={gridClass}>
