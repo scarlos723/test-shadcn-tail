@@ -1,13 +1,17 @@
 import { KpiCard } from "@/components/KpiCard";
 import { UserIcon } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { CreateCostumerForm } from "./components/CreateCostumerForm";
 import { CustomersTable } from "./components/CustomersTable";
 
 export const Customers = () => {
+  const { t } = useTranslation();
   return (
     <div>
       <div className="flex justify-between py-4">
-        <p>Customers</p>
+        <p>
+          <b>{t("customersPage.title")}</b>
+        </p>
         <CreateCostumerForm />
       </div>
       <KpiCard

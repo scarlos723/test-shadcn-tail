@@ -1,14 +1,17 @@
 import { KpiCard } from "@/components/KpiCard";
 import { FolderArchive } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { CreateNewProduct } from "./components/CreateNewProduct";
 import { ProductsTable } from "./components/ProductsTable";
 
 export const Products = () => {
+  const { t } = useTranslation();
+
   return (
     <div>
       <div className="flex justify-between mb-4">
         <p>
-          <b>Products</b>
+          <b>{t("productsPage.products")}</b>
         </p>
         <CreateNewProduct />
       </div>
@@ -16,15 +19,15 @@ export const Products = () => {
         <KpiCard
           items={[
             {
-              label: "All Products",
+              label: t("productsPage.allProducts"),
               value: "45",
             },
             {
-              label: "Stock Products",
+              label: t("productsPage.stockProducts"),
               value: "35",
             },
             {
-              label: "Out of Stock",
+              label: t("productsPage.outOfStock"),
               value: "8",
             },
           ]}

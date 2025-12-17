@@ -26,11 +26,13 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import { mockUserData } from "./data";
 import { accountSettingsSchema, type AccountSettingsFormData } from "./schema";
 
 export const AccountSettings = () => {
+  const { t } = useTranslation();
   const [profileImagePreview, setProfileImagePreview] = useState<string>(
     mockUserData.profileImage || ""
   );
@@ -52,8 +54,8 @@ export const AccountSettings = () => {
 
   const onSubmit = (data: AccountSettingsFormData) => {
     console.log("Updated data:", data);
-    toast.success("Profile Updated", {
-      description: "Your information has been successfully updated.",
+    toast.success(t("accountSettings.profileUpdated"), {
+      description: t("accountSettings.profileUpdatedDesc"),
     });
   };
 
@@ -73,10 +75,8 @@ export const AccountSettings = () => {
     <div className="container mx-auto py-8 px-4 max-w-4xl">
       <Card>
         <CardHeader>
-          <CardTitle>Account Settings</CardTitle>
-          <CardDescription>
-            Update your personal information and preferences
-          </CardDescription>
+          <CardTitle>{t("accountSettings.title")}</CardTitle>
+          <CardDescription>{t("accountSettings.subtitle")}</CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -90,7 +90,9 @@ export const AccountSettings = () => {
                       name="firstName"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>First Name</FormLabel>
+                          <FormLabel>
+                            {t("accountSettings.firstName")}
+                          </FormLabel>
                           <FormControl>
                             <Input placeholder="John" {...field} />
                           </FormControl>
@@ -104,7 +106,7 @@ export const AccountSettings = () => {
                       name="lastName"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Last Name</FormLabel>
+                          <FormLabel>{t("accountSettings.lastName")}</FormLabel>
                           <FormControl>
                             <Input placeholder="Doe" {...field} />
                           </FormControl>
@@ -120,7 +122,7 @@ export const AccountSettings = () => {
                     name="documentId"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Document ID</FormLabel>
+                        <FormLabel>{t("accountSettings.documentId")}</FormLabel>
                         <FormControl>
                           <Input placeholder="1234567890" {...field} />
                         </FormControl>
@@ -135,7 +137,7 @@ export const AccountSettings = () => {
                     name="email"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Email</FormLabel>
+                        <FormLabel>{t("accountSettings.email")}</FormLabel>
                         <FormControl>
                           <Input
                             type="email"
@@ -155,7 +157,9 @@ export const AccountSettings = () => {
                       name="countryCode"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Country Code</FormLabel>
+                          <FormLabel>
+                            {t("accountSettings.countryCode")}
+                          </FormLabel>
                           <Select
                             onValueChange={field.onChange}
                             defaultValue={field.value}
@@ -186,7 +190,9 @@ export const AccountSettings = () => {
                         name="phoneNumber"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Phone Number</FormLabel>
+                            <FormLabel>
+                              {t("accountSettings.phoneNumber")}
+                            </FormLabel>
                             <FormControl>
                               <Input placeholder="3001234567" {...field} />
                             </FormControl>
@@ -203,7 +209,7 @@ export const AccountSettings = () => {
                     name="address"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Address</FormLabel>
+                        <FormLabel>{t("accountSettings.address")}</FormLabel>
                         <FormControl>
                           <Input placeholder="123 Main St #45-67" {...field} />
                         </FormControl>
@@ -218,7 +224,7 @@ export const AccountSettings = () => {
                     name="city"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>City</FormLabel>
+                        <FormLabel>{t("accountSettings.city")}</FormLabel>
                         <FormControl>
                           <Input placeholder="New York" {...field} />
                         </FormControl>
@@ -229,7 +235,7 @@ export const AccountSettings = () => {
                 </div>
                 <div className="lg:col-span-1">
                   <div className="space-y-4 sticky top-8">
-                    <FormLabel>Profile Picture</FormLabel>
+                    <FormLabel>{t("accountSettings.profilePicture")}</FormLabel>
                     <div className="flex flex-col items-center gap-4">
                       {profileImagePreview && (
                         <div className="w-32 h-32">
@@ -257,7 +263,7 @@ export const AccountSettings = () => {
               {/* Submit Button */}
               <div className="flex justify-end py-8 lg:pt-4 lg:pb-0 sticky bottom-0 bg-white/50 backdrop-blur-xs ">
                 <Button type="submit" size="lg">
-                  Update
+                  {t("accountSettings.update")}
                 </Button>
               </div>
             </form>

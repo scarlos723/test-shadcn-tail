@@ -10,11 +10,13 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ROUTES } from "@/routes/constants";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router";
 import { toast } from "sonner";
 import logo from "../assets/Logo.png";
 
 export const Register = () => {
+  const { t } = useTranslation();
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -25,15 +27,15 @@ export const Register = () => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
-      toast.error("Las contraseñas no coinciden", {
-        description: "Por favor, verifica que ambas contraseñas sean iguales.",
+      toast.error(t("auth.register.passwordMismatch"), {
+        description: t("auth.register.passwordMismatchDesc"),
       });
       return;
     }
 
     // Simulación de registro exitoso
-    toast.success("¡Registro exitoso!", {
-      description: `Bienvenido, ${fullName}. Tu cuenta ha sido creada correctamente.`,
+    toast.success(t("auth.register.success"), {
+      description: t("auth.register.welcomeMessage", { name: fullName }),
     });
 
     // Navegar al dashboard después de un breve delay
@@ -48,68 +50,70 @@ export const Register = () => {
         <CardHeader className="space-y-1">
           <img src={logo} alt="Logo" className="mx-auto" />
           <CardTitle className="text-2xl font-bold text-center">
-            Get Started with Deol
+            {t("auth.register.title")}
           </CardTitle>
           <CardDescription className="text-center">
-            Create your free account
+            {t("auth.register.subtitle")}
           </CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="fullName">Full Name</Label>
+              <Label htmlFor="fullName">{t("auth.register.fullName")}</Label>
               <Input
                 id="fullName"
                 type="text"
-                placeholder="John Doe"
+                placeholder={t("auth.register.fullNamePlaceholder")}
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
                 required
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email">{t("auth.register.email")}</Label>
               <Input
                 id="email"
                 type="email"
-                placeholder="your@email.com"
+                placeholder={t("auth.register.emailPlaceholder")}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password">{t("auth.register.password")}</Label>
               <Input
                 id="password"
                 type="password"
-                placeholder="••••••••"
+                placeholder={t("auth.register.passwordPlaceholder")}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="confirmPassword">Confirm Password</Label>
+              <Label htmlFor="confirmPassword">
+                {t("auth.register.confirmPassword")}
+              </Label>
               <Input
                 id="confirmPassword"
                 type="password"
-                placeholder="••••••••"
+                placeholder={t("auth.register.passwordPlaceholder")}
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 required
               />
             </div>
             <Button type="submit" className="w-full">
-              Register
+              {t("auth.register.submit")}
             </Button>
             <p className="text-center text-sm text-gray-600">
-              Already have an account?{" "}
+              {t("auth.register.haveAccount")}{" "}
               <Link
                 to="/login"
                 className="text-primary hover:underline font-medium"
               >
-                Login
+                {t("auth.register.login")}
               </Link>
             </p>
           </form>

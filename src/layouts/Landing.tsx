@@ -3,7 +3,7 @@ import { Outlet } from "react-router";
 export const Landing = () => {
   return (
     <>
-      <header>
+      <header className="relative">
         <Navbar />
       </header>
       {<Outlet></Outlet>}

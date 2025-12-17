@@ -9,9 +9,11 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
 import logo from "../assets/Logo.png";
 export const RecoveryPass = () => {
+  const { t } = useTranslation();
   const [email, setEmail] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -26,33 +28,35 @@ export const RecoveryPass = () => {
         <CardHeader className="space-y-1">
           <img src={logo} alt="Logo" className="mx-auto" />
           <CardTitle className="text-2xl font-bold text-center">
-            Forgot your password?
+            {t("auth.recovery.title")}
           </CardTitle>
-          <CardDescription className="text-center">Get it back</CardDescription>
+          <CardDescription className="text-center">
+            {t("auth.recovery.subtitle")}
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email">{t("auth.recovery.email")}</Label>
               <Input
                 id="email"
                 type="email"
-                placeholder="your@email.com"
+                placeholder={t("auth.recovery.emailPlaceholder")}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </div>
             <Button type="submit" className="w-full">
-              Recovery
+              {t("auth.recovery.submit")}
             </Button>
             <p className="text-center text-sm text-gray-600">
-              Remember your password?{" "}
+              {t("auth.recovery.remember")}{" "}
               <Link
                 to="/login"
                 className="text-primary hover:underline font-medium"
               >
-                Login
+                {t("auth.recovery.login")}
               </Link>
             </p>
           </form>

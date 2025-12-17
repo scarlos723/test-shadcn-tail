@@ -7,6 +7,7 @@ import {
   UsersIcon,
 } from "lucide-react";
 import * as React from "react";
+import { useTranslation } from "react-i18next";
 
 import logo from "@/assets/Logo.png";
 import {
@@ -154,45 +155,46 @@ import { toast } from "sonner";
 //   ],
 // };
 
-const itemsDash = [
-  {
-    title: "Home",
-    url: `/${ROUTES.DASHBOARD}/`,
-    icon: LayoutGrid,
-  },
-  {
-    title: "Orders",
-    url: `/${ROUTES.DASHBOARD}/${ROUTES.ORDERS}`,
-    icon: Handbag,
-  },
-  {
-    title: "Customers",
-    url: `/${ROUTES.DASHBOARD}/${ROUTES.CUSTOMERS}`,
-    icon: UsersIcon,
-  },
-  // {
-  //   title: "Users",
-  //   url: `/${ROUTES.DASHBOARD}/${ROUTES.USERS}`,
-  //   icon: UsersIcon,
-  // },
-  {
-    title: "Products",
-    url: `/${ROUTES.DASHBOARD}/${ROUTES.PRODUCTS}`,
-    icon: PackageSearch,
-  },
-  {
-    title: "Account Settings",
-    url: `/${ROUTES.DASHBOARD}/${ROUTES.ACCOUNT_SETTINGS}`,
-    icon: Settings,
-  },
-];
-
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const navigate = useNavigate();
+  const { t } = useTranslation();
+
+  const itemsDash = [
+    {
+      title: t("sidebar.home"),
+      url: `/${ROUTES.DASHBOARD}/`,
+      icon: LayoutGrid,
+    },
+    {
+      title: t("sidebar.orders"),
+      url: `/${ROUTES.DASHBOARD}/${ROUTES.ORDERS}`,
+      icon: Handbag,
+    },
+    {
+      title: t("sidebar.customers"),
+      url: `/${ROUTES.DASHBOARD}/${ROUTES.CUSTOMERS}`,
+      icon: UsersIcon,
+    },
+    // {
+    //   title: "Users",
+    //   url: `/${ROUTES.DASHBOARD}/${ROUTES.USERS}`,
+    //   icon: UsersIcon,
+    // },
+    {
+      title: t("sidebar.products"),
+      url: `/${ROUTES.DASHBOARD}/${ROUTES.PRODUCTS}`,
+      icon: PackageSearch,
+    },
+    {
+      title: t("sidebar.accountSettings"),
+      url: `/${ROUTES.DASHBOARD}/${ROUTES.ACCOUNT_SETTINGS}`,
+      icon: Settings,
+    },
+  ];
 
   const handleLogout = () => {
-    toast.success("Sesión cerrada", {
-      description: "Has cerrado sesión exitosamente.",
+    toast.success(t("sidebar.logoutSuccess"), {
+      description: t("sidebar.logoutSuccessDesc"),
     });
     setTimeout(() => {
       navigate("/");
@@ -271,7 +273,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               <div className="flex items-center justify-center rounded-md p-1 transition-colors hover:bg-destructive hover:text-destructive-foreground">
                 <LogOut className="h-4 w-4" />
               </div>
-              <span>Cerrar Sesión</span>
+              <span>{t("sidebar.logout")}</span>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>

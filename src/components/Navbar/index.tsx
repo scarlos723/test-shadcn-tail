@@ -3,9 +3,12 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { ROUTES } from "@/routes/constants";
 import { Menu, Package } from "lucide-react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
+import { LanguageSwitcher } from "../LanguageSwitcher";
 
 export function Navbar() {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -24,35 +27,38 @@ export function Navbar() {
               href="#features"
               className="text-sm font-medium transition-colors hover:text-primary"
             >
-              Características
+              {t("navbar.features")}
             </a>
             <Link
               to={`/${ROUTES.DASHBOARD}`}
               className="text-sm font-medium transition-colors hover:text-primary"
             >
-              Cómo Funciona
+              {t("navbar.howItWorks")}
             </Link>
             <a
               href="#testimonials"
               className="text-sm font-medium transition-colors hover:text-primary"
             >
-              Testimonios
+              {t("navbar.testimonials")}
             </a>
             <a
               href="#contact"
               className="text-sm font-medium transition-colors hover:text-primary"
             >
-              Contacto
+              {t("navbar.contact")}
             </a>
           </div>
 
           {/* Desktop CTA Buttons */}
           <div className="hidden md:flex items-center space-x-4">
+            <div className="">
+              <LanguageSwitcher />
+            </div>
             <Button variant="ghost" asChild>
-              <Link to={ROUTES.LOGIN}>Iniciar Sesión</Link>
+              <Link to={ROUTES.LOGIN}>{t("navbar.login")}</Link>
             </Button>
             <Button asChild>
-              <Link to={ROUTES.REGISTER}>Comenzar Gratis</Link>
+              <Link to={ROUTES.REGISTER}>{t("navbar.startFree")}</Link>
             </Button>
           </div>
 
@@ -81,40 +87,43 @@ export function Navbar() {
                     className="text-base font-medium transition-colors hover:text-primary"
                     onClick={() => setIsOpen(false)}
                   >
-                    Características
+                    {t("navbar.features")}
                   </a>
                   <Link
                     to={`/${ROUTES.DASHBOARD}`}
                     className="text-base font-medium transition-colors hover:text-primary"
                     onClick={() => setIsOpen(false)}
                   >
-                    Cómo Funciona
+                    {t("navbar.howItWorks")}
                   </Link>
                   <a
                     href="#testimonials"
                     className="text-base font-medium transition-colors hover:text-primary"
                     onClick={() => setIsOpen(false)}
                   >
-                    Testimonios
+                    {t("navbar.testimonials")}
                   </a>
                   <a
                     href="#contact"
                     className="text-base font-medium transition-colors hover:text-primary"
                     onClick={() => setIsOpen(false)}
                   >
-                    Contacto
+                    {t("navbar.contact")}
                   </a>
                 </div>
 
                 <div className="flex flex-col space-y-3 pt-6 border-t">
+                  <div>
+                    <LanguageSwitcher />
+                  </div>
                   <Button variant="outline" asChild className="w-full">
                     <Link to={ROUTES.LOGIN} onClick={() => setIsOpen(false)}>
-                      Iniciar Sesión
+                      {t("navbar.login")}
                     </Link>
                   </Button>
                   <Button asChild className="w-full">
                     <Link to={ROUTES.REGISTER} onClick={() => setIsOpen(false)}>
-                      Comenzar Gratis
+                      {t("navbar.startFree")}
                     </Link>
                   </Button>
                 </div>

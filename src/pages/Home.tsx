@@ -12,9 +12,11 @@ import {
   TrendingUp,
 } from "lucide-react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
 
 export const Home = () => {
+  const { t } = useTranslation();
   const [email, setEmail] = useState("");
 
   const handleEmailSubmit = (e: React.FormEvent) => {
@@ -32,27 +34,27 @@ export const Home = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <Badge variant="secondary" className="w-fit">
-                Para Pequeños Emprendimientos
+                {t("home.hero.badge")}
               </Badge>
               <h1 className="text-4xl lg:text-6xl font-bold tracking-tight">
-                Gestiona tu inventario de forma{" "}
-                <span className="text-primary">simple y eficiente</span>
+                {t("home.hero.title")}{" "}
+                <span className="text-primary">
+                  {t("home.hero.titleHighlight")}
+                </span>
               </h1>
               <p className="text-lg text-muted-foreground">
-                La solución perfecta para emprendedores que buscan controlar su
-                inventario, ventas y clientes desde un solo lugar. Sin
-                complicaciones, sin costos ocultos.
+                {t("home.hero.description")}
               </p>
               <div className="flex flex-wrap gap-4">
                 <Button size="lg" asChild>
-                  <Link to={ROUTES.REGISTER}>Comienza Gratis</Link>
+                  <Link to={ROUTES.REGISTER}>{t("home.hero.startFree")}</Link>
                 </Button>
                 <Button size="lg" variant="outline" asChild>
-                  <Link to={ROUTES.LOGIN}>Iniciar Sesión</Link>
+                  <Link to={ROUTES.LOGIN}>{t("home.hero.login")}</Link>
                 </Button>
               </div>
               <p className="text-sm text-muted-foreground">
-                ✨ No se requiere tarjeta de crédito
+                {t("home.hero.noCard")}
               </p>
             </div>
             <div className="bg-muted rounded-lg aspect-video flex items-center justify-center p-8 border-2 border-dashed">
@@ -71,14 +73,13 @@ export const Home = () => {
         <div className="container mx-auto max-w-6xl">
           <div className="text-center space-y-4 mb-16">
             <Badge variant="secondary" className="mx-auto">
-              Características
+              {t("home.features.badge")}
             </Badge>
             <h2 className="text-3xl lg:text-4xl font-bold">
-              Todo lo que necesitas para crecer
+              {t("home.features.title")}
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Herramientas diseñadas específicamente para las necesidades de
-              pequeños emprendimientos
+              {t("home.features.description")}
             </p>
           </div>
 
@@ -88,10 +89,11 @@ export const Home = () => {
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
                   <Package className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="text-xl font-semibold">Control de Inventario</h3>
+                <h3 className="text-xl font-semibold">
+                  {t("home.features.inventoryControl.title")}
+                </h3>
                 <p className="text-muted-foreground">
-                  Mantén un registro actualizado de todos tus productos, stock
-                  disponible y alertas de bajo inventario.
+                  {t("home.features.inventoryControl.description")}
                 </p>
               </CardContent>
             </Card>
@@ -101,10 +103,11 @@ export const Home = () => {
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
                   <TrendingUp className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="text-xl font-semibold">Gestión de Ventas</h3>
+                <h3 className="text-xl font-semibold">
+                  {t("home.features.salesManagement.title")}
+                </h3>
                 <p className="text-muted-foreground">
-                  Registra y da seguimiento a todas tus ventas, identifica tus
-                  productos más vendidos y aumenta tus ganancias.
+                  {t("home.features.salesManagement.description")}
                 </p>
               </CardContent>
             </Card>
@@ -115,11 +118,10 @@ export const Home = () => {
                   <BarChart3 className="h-6 w-6 text-primary" />
                 </div>
                 <h3 className="text-xl font-semibold">
-                  Reportes en Tiempo Real
+                  {t("home.features.realTimeReports.title")}
                 </h3>
                 <p className="text-muted-foreground">
-                  Visualiza el desempeño de tu negocio con reportes y gráficos
-                  fáciles de entender.
+                  {t("home.features.realTimeReports.description")}
                 </p>
               </CardContent>
             </Card>
@@ -129,10 +131,11 @@ export const Home = () => {
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
                   <Clock className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="text-xl font-semibold">Ahorra Tiempo</h3>
+                <h3 className="text-xl font-semibold">
+                  {t("home.features.saveTime.title")}
+                </h3>
                 <p className="text-muted-foreground">
-                  Automatiza tareas repetitivas y dedica más tiempo a hacer
-                  crecer tu negocio.
+                  {t("home.features.saveTime.description")}
                 </p>
               </CardContent>
             </Card>
@@ -142,10 +145,11 @@ export const Home = () => {
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
                   <CheckCircle2 className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="text-xl font-semibold">Fácil de Usar</h3>
+                <h3 className="text-xl font-semibold">
+                  {t("home.features.easyToUse.title")}
+                </h3>
                 <p className="text-muted-foreground">
-                  Interfaz intuitiva que no requiere capacitación. Empieza a
-                  usar el sistema en minutos.
+                  {t("home.features.easyToUse.description")}
                 </p>
               </CardContent>
             </Card>
@@ -155,10 +159,11 @@ export const Home = () => {
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
                   <Mail className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="text-xl font-semibold">Soporte Dedicado</h3>
+                <h3 className="text-xl font-semibold">
+                  {t("home.features.support.title")}
+                </h3>
                 <p className="text-muted-foreground">
-                  Nuestro equipo está siempre disponible para ayudarte a
-                  resolver cualquier duda.
+                  {t("home.features.support.description")}
                 </p>
               </CardContent>
             </Card>
@@ -171,10 +176,10 @@ export const Home = () => {
         <div className="container mx-auto max-w-6xl">
           <div className="text-center space-y-4 mb-16">
             <Badge variant="secondary" className="mx-auto">
-              Cómo Funciona
+              {t("home.howItWorks.badge")}
             </Badge>
             <h2 className="text-3xl lg:text-4xl font-bold">
-              Empieza en 3 simples pasos
+              {t("home.howItWorks.title")}
             </h2>
           </div>
 
@@ -190,10 +195,11 @@ export const Home = () => {
                 <div className="w-10 h-10 bg-primary text-primary-foreground rounded-full flex items-center justify-center font-bold">
                   1
                 </div>
-                <h3 className="text-xl font-semibold">Crea tu Cuenta</h3>
+                <h3 className="text-xl font-semibold">
+                  {t("home.howItWorks.step1.title")}
+                </h3>
                 <p className="text-muted-foreground">
-                  Regístrate gratis en menos de 1 minuto. Solo necesitas tu
-                  email y una contraseña.
+                  {t("home.howItWorks.step1.description")}
                 </p>
               </div>
             </div>
@@ -209,10 +215,11 @@ export const Home = () => {
                 <div className="w-10 h-10 bg-primary text-primary-foreground rounded-full flex items-center justify-center font-bold">
                   2
                 </div>
-                <h3 className="text-xl font-semibold">Agrega tus Productos</h3>
+                <h3 className="text-xl font-semibold">
+                  {t("home.howItWorks.step2.title")}
+                </h3>
                 <p className="text-muted-foreground">
-                  Carga tu inventario de forma rápida y sencilla. Incluye
-                  precios, stock y fotos.
+                  {t("home.howItWorks.step2.description")}
                 </p>
               </div>
             </div>
@@ -228,10 +235,11 @@ export const Home = () => {
                 <div className="w-10 h-10 bg-primary text-primary-foreground rounded-full flex items-center justify-center font-bold">
                   3
                 </div>
-                <h3 className="text-xl font-semibold">Comienza a Vender</h3>
+                <h3 className="text-xl font-semibold">
+                  {t("home.howItWorks.step3.title")}
+                </h3>
                 <p className="text-muted-foreground">
-                  Registra ventas, controla tu stock y observa cómo crece tu
-                  negocio.
+                  {t("home.howItWorks.step3.description")}
                 </p>
               </div>
             </div>
@@ -244,10 +252,10 @@ export const Home = () => {
         <div className="container mx-auto max-w-6xl">
           <div className="text-center space-y-4 mb-16">
             <Badge variant="secondary" className="mx-auto">
-              Testimonios
+              {t("home.testimonials.badge")}
             </Badge>
             <h2 className="text-3xl lg:text-4xl font-bold">
-              Lo que dicen nuestros clientes
+              {t("home.testimonials.title")}
             </h2>
           </div>
 
@@ -258,17 +266,18 @@ export const Home = () => {
                   {"★★★★★"}
                 </div>
                 <p className="text-muted-foreground italic">
-                  "Antes llevaba todo en cuadernos y perdía mucho tiempo. Ahora
-                  todo está organizado y puedo ver mis ventas en tiempo real."
+                  "{t("home.testimonials.testimonial1.text")}"
                 </p>
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-muted rounded-full flex items-center justify-center">
                     <span className="text-sm font-medium">MC</span>
                   </div>
                   <div>
-                    <p className="font-medium">María Contreras</p>
+                    <p className="font-medium">
+                      {t("home.testimonials.testimonial1.name")}
+                    </p>
                     <p className="text-sm text-muted-foreground">
-                      Tienda de Ropa
+                      {t("home.testimonials.testimonial1.business")}
                     </p>
                   </div>
                 </div>
@@ -281,17 +290,18 @@ export const Home = () => {
                   {"★★★★★"}
                 </div>
                 <p className="text-muted-foreground italic">
-                  "Perfecto para mi pequeño negocio. Es fácil de usar y me ayuda
-                  a no quedarme sin stock de mis productos más vendidos."
+                  "{t("home.testimonials.testimonial2.text")}"
                 </p>
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-muted rounded-full flex items-center justify-center">
                     <span className="text-sm font-medium">JR</span>
                   </div>
                   <div>
-                    <p className="font-medium">Juan Ramírez</p>
+                    <p className="font-medium">
+                      {t("home.testimonials.testimonial2.name")}
+                    </p>
                     <p className="text-sm text-muted-foreground">
-                      Ferretería Local
+                      {t("home.testimonials.testimonial2.business")}
                     </p>
                   </div>
                 </div>
@@ -304,17 +314,18 @@ export const Home = () => {
                   {"★★★★★"}
                 </div>
                 <p className="text-muted-foreground italic">
-                  "Lo mejor es que puedo acceder desde mi teléfono. Actualizo el
-                  inventario mientras atiendo a los clientes."
+                  "{t("home.testimonials.testimonial3.text")}"
                 </p>
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-muted rounded-full flex items-center justify-center">
                     <span className="text-sm font-medium">AS</span>
                   </div>
                   <div>
-                    <p className="font-medium">Ana Silva</p>
+                    <p className="font-medium">
+                      {t("home.testimonials.testimonial3.name")}
+                    </p>
                     <p className="text-sm text-muted-foreground">
-                      Cafetería & Repostería
+                      {t("home.testimonials.testimonial3.business")}
                     </p>
                   </div>
                 </div>
@@ -328,15 +339,12 @@ export const Home = () => {
       <section className="px-6 py-20 bg-primary text-primary-foreground">
         <div className="container mx-auto max-w-4xl text-center space-y-8">
           <h2 className="text-3xl lg:text-5xl font-bold">
-            ¿Listo para hacer crecer tu negocio?
+            {t("home.cta.title")}
           </h2>
-          <p className="text-lg opacity-90">
-            Únete a cientos de emprendedores que ya están optimizando su gestión
-            de inventario
-          </p>
+          <p className="text-lg opacity-90">{t("home.cta.description")}</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" variant="secondary" asChild>
-              <Link to={ROUTES.REGISTER}>Comenzar Ahora</Link>
+              <Link to={ROUTES.REGISTER}>{t("home.cta.startNow")}</Link>
             </Button>
             <Button
               size="lg"
@@ -344,7 +352,7 @@ export const Home = () => {
               className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary"
               asChild
             >
-              <Link to={ROUTES.LOGIN}>Ya tengo cuenta</Link>
+              <Link to={ROUTES.LOGIN}>{t("home.cta.haveAccount")}</Link>
             </Button>
           </div>
         </div>
@@ -355,14 +363,13 @@ export const Home = () => {
         <div className="container mx-auto max-w-2xl">
           <div className="text-center space-y-4 mb-8">
             <Badge variant="secondary" className="mx-auto">
-              Contáctanos
+              {t("home.contact.badge")}
             </Badge>
             <h2 className="text-3xl lg:text-4xl font-bold">
-              ¿Necesitas más información?
+              {t("home.contact.title")}
             </h2>
             <p className="text-lg text-muted-foreground">
-              Déjanos tu correo y te enviaremos toda la información que
-              necesitas
+              {t("home.contact.description")}
             </p>
           </div>
 
@@ -372,7 +379,7 @@ export const Home = () => {
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Input
                     type="email"
-                    placeholder="tu@email.com"
+                    placeholder={t("home.contact.placeholder")}
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
@@ -380,12 +387,11 @@ export const Home = () => {
                   />
                   <Button type="submit" size="lg">
                     <Mail className="mr-2 h-4 w-4" />
-                    Enviar
+                    {t("home.contact.send")}
                   </Button>
                 </div>
                 <p className="text-xs text-muted-foreground text-center">
-                  Te responderemos en menos de 24 horas. Sin spam, lo
-                  prometemos.
+                  {t("home.contact.promise")}
                 </p>
               </form>
             </CardContent>
@@ -400,68 +406,67 @@ export const Home = () => {
             <div className="space-y-4">
               <h3 className="font-bold text-lg">Deol Inventory Pro</h3>
               <p className="text-sm text-muted-foreground">
-                La solución de gestión de inventario para pequeños
-                emprendimientos.
+                {t("home.footer.description")}
               </p>
             </div>
             <div className="space-y-4">
-              <h4 className="font-semibold">Producto</h4>
+              <h4 className="font-semibold">{t("home.footer.product")}</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>
                   <a href="#" className="hover:text-foreground">
-                    Características
+                    {t("home.footer.features")}
                   </a>
                 </li>
                 <li>
                   <a href="#" className="hover:text-foreground">
-                    Precios
+                    {t("home.footer.pricing")}
                   </a>
                 </li>
                 <li>
                   <a href="#" className="hover:text-foreground">
-                    Testimonios
+                    {t("home.footer.testimonials")}
                   </a>
                 </li>
               </ul>
             </div>
             <div className="space-y-4">
-              <h4 className="font-semibold">Empresa</h4>
+              <h4 className="font-semibold">{t("home.footer.company")}</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>
                   <a href="#" className="hover:text-foreground">
-                    Sobre Nosotros
+                    {t("home.footer.about")}
                   </a>
                 </li>
                 <li>
                   <a href="#" className="hover:text-foreground">
-                    Blog
+                    {t("home.footer.blog")}
                   </a>
                 </li>
                 <li>
                   <a href="#" className="hover:text-foreground">
-                    Contacto
+                    {t("home.footer.contact")}
                   </a>
                 </li>
               </ul>
             </div>
             <div className="space-y-4">
-              <h4 className="font-semibold">Legal</h4>
+              <h4 className="font-semibold">{t("home.footer.legal")}</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>
                   <a href="#" className="hover:text-foreground">
-                    Privacidad
+                    {t("home.footer.privacy")}
                   </a>
                 </li>
                 <li>
                   <a href="#" className="hover:text-foreground">
-                    Términos
+                    {t("home.footer.terms")}
                   </a>
                 </li>
               </ul>
             </div>
           </div>
           <div className="mt-12 pt-8 border-t text-center text-sm text-muted-foreground">
-            <p>&copy; 2025 InventoryPro. Todos los derechos reservados.</p>
+            <p>&copy; 2025 InventoryPro. {t("home.footer.rights")}</p>
           </div>
         </div>
       </footer>

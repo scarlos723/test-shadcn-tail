@@ -29,9 +29,10 @@ import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 import { data as paymentData } from "../../data.ts";
 import type { Order } from "../../types";
-import { columns } from "./columns.tsx";
+import { useOrderColumns } from "./columns.tsx";
 const data: Order[] = paymentData;
 export const OrdersTable = () => {
+  const columns = useOrderColumns();
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});

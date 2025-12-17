@@ -10,11 +10,13 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ROUTES } from "@/routes/constants";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router";
 import { toast } from "sonner";
 import logo from "../assets/Logo.png";
 
 export const Login = () => {
+  const { t } = useTranslation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -23,8 +25,8 @@ export const Login = () => {
     e.preventDefault();
 
     // Simulación de login exitoso
-    toast.success("Inicio de sesión exitoso", {
-      description: `Bienvenido, ${email}`,
+    toast.success(t("auth.login.success"), {
+      description: t("auth.login.welcomeBack", { email }),
     });
 
     // Navegar al dashboard después de un breve delay
@@ -39,31 +41,31 @@ export const Login = () => {
         <CardHeader className="space-y-1">
           <img src={logo} alt="Logo" className="mx-auto" />
           <CardTitle className="text-2xl font-bold text-center">
-            Welcome back
+            {t("auth.login.title")}
           </CardTitle>
           <CardDescription className="text-center">
-            Login to your account
+            {t("auth.login.subtitle")}
           </CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email">{t("auth.login.email")}</Label>
               <Input
                 id="email"
                 type="email"
-                placeholder="your@email.com"
+                placeholder={t("auth.login.emailPlaceholder")}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password">{t("auth.login.password")}</Label>
               <Input
                 id="password"
                 type="password"
-                placeholder="••••••••"
+                placeholder={t("auth.login.passwordPlaceholder")}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
@@ -74,19 +76,19 @@ export const Login = () => {
                 to="/recovery"
                 className="text-sm text-primary hover:underline"
               >
-                Recover password
+                {t("auth.login.recover")}
               </Link>
             </div>
             <Button type="submit" className="w-full">
-              Login
+              {t("auth.login.submit")}
             </Button>
             <p className="text-center text-sm text-gray-600">
-              Don't have an account?{" "}
+              {t("auth.login.noAccount")}{" "}
               <Link
                 to="/register"
                 className="text-primary hover:underline font-medium"
               >
-                Sign up
+                {t("auth.login.signUp")}
               </Link>
             </p>
           </form>

@@ -28,9 +28,10 @@ import {
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 import { customerList } from "../../data";
-import { columns } from "./columns";
+import { useCustomerColumns } from "./columns";
 
 export const CustomersTable = () => {
+  const columns = useCustomerColumns();
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});

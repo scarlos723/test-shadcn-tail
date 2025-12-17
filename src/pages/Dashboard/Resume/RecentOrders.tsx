@@ -1,5 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useTranslation } from "react-i18next";
+
 export const RecentOrders = (props: {
   orderItems: {
     id: string;
@@ -9,11 +11,13 @@ export const RecentOrders = (props: {
     status: string;
   }[];
 }) => {
+  const { t } = useTranslation();
+
   return (
     <Card className="flex flex-col">
       <CardHeader className="flex-row items-start space-y-0 pb-0">
         <div className="grid gap-1">
-          <CardTitle>Recent Orders</CardTitle>
+          <CardTitle>{t("resumePage.recentOrders")}</CardTitle>
           <div className="flex gap-2 items-center">
             {/* <CardDescription>January - June 2024</CardDescription> */}
           </div>
