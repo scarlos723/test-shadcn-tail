@@ -6,7 +6,7 @@ import { CustomersTable } from "./components/CustomersTable";
 export const Customers = () => {
   return (
     <div>
-      <div className="flex justify-between">
+      <div className="flex justify-between py-4">
         <p>Customers</p>
         <CreateCostumerForm />
       </div>

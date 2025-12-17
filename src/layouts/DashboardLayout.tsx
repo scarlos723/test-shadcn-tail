@@ -21,11 +21,14 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
+import { useBreadcrumb } from "@/hooks/use-breadcrumb";
 import { BellIcon } from "lucide-react";
 import { Suspense } from "react";
 
 import { Outlet } from "react-router";
 export const DashboardLayout = () => {
+  const breadcrumbs = useBreadcrumb();
+
   return (
     <Suspense fallback={<DashboardLoader />}>
       <SidebarProvider>
@@ -42,15 +45,25 @@ export const DashboardLayout = () => {
 
                 <Breadcrumb>
                   <BreadcrumbList>
-                    <BreadcrumbItem className="hidden md:block">
-                      <BreadcrumbLink href="#">
-                        Building Your Application
-                      </BreadcrumbLink>
-                    </BreadcrumbItem>
-                    <BreadcrumbSeparator className="hidden md:block" />
-                    <BreadcrumbItem>
-                      <BreadcrumbPage>Data Fetching</BreadcrumbPage>
-                    </BreadcrumbItem>
+                    {breadcrumbs.map((crumb, index) => (
+                      <div
+                        key={crumb.href || crumb.label}
+                        className="flex items-center gap-2"
+                      >
+                        {index > 0 && (
+                          <BreadcrumbSeparator className="hidden md:block" />
+                        )}
+                        <BreadcrumbItem className="hidden md:block">
+                          {crumb.isCurrentPage ? (
+                            <BreadcrumbPage>{crumb.label}</BreadcrumbPage>
+                          ) : (
+                            <BreadcrumbLink href={crumb.href}>
+                              {crumb.label}
+                            </BreadcrumbLink>
+                          )}
+                        </BreadcrumbItem>
+                      </div>
+                    ))}
                   </BreadcrumbList>
                 </Breadcrumb>
               </div>

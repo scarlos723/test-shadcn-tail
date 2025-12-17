@@ -12,7 +12,7 @@ export interface ProductOrder {
 
 // Generar órdenes dummy para un producto
 export const generateProductOrders = (
-  productId: string,
+  _productId: string,
   productPrice: number
 ): ProductOrder[] => {
   const orderTypes: Array<"online" | "in-store" | "pickup" | "delivery"> = [
