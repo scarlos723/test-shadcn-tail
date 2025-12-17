@@ -102,7 +102,7 @@ export const OrderDeatails = () => {
                 </Button>
               </div>
             </div>
-            <div className="flex gap-2">
+            <div className="grid lg:flex gap-2">
               <Select value={orderStatus} onValueChange={handleStatusChange}>
                 <SelectTrigger className="w-[180px]">
                   <SelectValue placeholder="Select status" />
