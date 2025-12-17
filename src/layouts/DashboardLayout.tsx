@@ -82,8 +82,9 @@ export const DashboardLayout = () => {
               </div>
             </div>
           </header>
-
-          <main className="p-4">{<Outlet></Outlet>}</main>
+          <Suspense fallback={<DashboardLoader />}>
+            <main className="p-4">{<Outlet></Outlet>}</main>
+          </Suspense>
         </SidebarInset>
       </SidebarProvider>
     </Suspense>
