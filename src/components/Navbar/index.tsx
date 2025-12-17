@@ -83,13 +83,13 @@ export function Navbar() {
                   >
                     Características
                   </a>
-                  <a
-                    href="#how-it-works"
+                  <Link
+                    to={`/${ROUTES.DASHBOARD}`}
                     className="text-base font-medium transition-colors hover:text-primary"
                     onClick={() => setIsOpen(false)}
                   >
                     Cómo Funciona
-                  </a>
+                  </Link>
                   <a
                     href="#testimonials"
                     className="text-base font-medium transition-colors hover:text-primary"
